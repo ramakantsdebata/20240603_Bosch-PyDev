@@ -251,7 +251,7 @@ z = 300
 print("Global -", s1)
 '''
 
-
+'''
 def Outer(string):
     s1= string +"!!"
 
@@ -266,3 +266,20 @@ f2 = Outer("Second")
 
 f1()
 f2()
+'''
+
+# LEGB
+
+x = 10
+def Outer():
+    x = 20
+    def Inner():
+        nonlocal x
+        x = 30
+        print("Inner ->", x)
+
+    Inner()
+    print("Outer ->", x)
+    
+
+Outer()
