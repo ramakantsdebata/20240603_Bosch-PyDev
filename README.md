@@ -10,10 +10,9 @@ ramakant.s.debata@gmail.com
 Feedback: "https://forms.gle/CxKQ2iBMNsHYizhe9"
 
 1. Create a virtual environment
-    * py -m venv <name>
-
+    * py -m venv env-myenv01
 2. For bash users
-    * source <>/Scripts/activate
+    * source env-myenv01/Scripts/activate
 
 3. Check packages 
     * pip list
