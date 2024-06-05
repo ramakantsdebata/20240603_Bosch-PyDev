@@ -179,7 +179,7 @@ lst = list()
 a, b, c, *lst = 10, 20, 30, 40, 50
 print(a, b, c, lst)
 '''
-
+'''
 def GenericFunc(a, b, *vArgs, **kwArgs):
     print(f"a[{a}], b[{b}], vArgs[{vArgs}], kwArgs[{kwArgs}]")
 
@@ -190,3 +190,79 @@ GenericFunc(1, 2, 3, 4, 5, d1 = 6, d2 = 7)
 GenericFunc(1, 2, d1 = 3, d2 = 4)
 # GenericFunc(1, 2, d1 = 3, d2 = 4, 5, 6)  # ERROR: Pos args after KW args
 # Func(PosArgs, /, Either, *, KwArgs)
+'''
+
+## SCOPES ##############################################
+
+# LEGB  (Local, External, Global, Builtins)
+'''
+s1 = "Global"
+
+def Outer():
+    # s1 = "Outer"              # Creating a new local variable
+    # global s1
+    # s1 = "Global-Modified"      # Modify the global variable
+
+    s1 = "Outer"
+    x = 10
+    def Inner():
+        # global s1
+        nonlocal s1
+        s1 = "Inner-Outer"
+        print("Inner -", s1)
+    
+    print("Outer -", s1)
+
+    return Inner
+
+# res = Outer()
+
+# print(res)
+
+
+f1 = Outer()
+f2 = Outer()
+print("Global -", s1)
+
+print("\n\nLong after....")
+f1()
+'''
+#-----------------------------------------------------------
+'''
+s1 = "Global"
+
+x = 100
+
+def Func():
+    # global s1
+    s1 = "Func1"
+    p = 100
+    print(f"Globals - {type(globals())}, {globals()}")
+    print(f"Locals - {type(locals())}, {locals()}")
+    q = 200
+    globals()['s1'] = "Modified globals"
+    s1 = "Func2"
+    print("Func -", s1)
+
+y = 200
+Func()
+
+z = 300
+print("Global -", s1)
+'''
+
+
+def Outer(string):
+    s1= string +"!!"
+
+    def Inner():
+        nonlocal s1
+        print("Inner -", s1)
+
+    return Inner
+
+f1 = Outer("First")
+f2 = Outer("Second")
+
+f1()
+f2()
