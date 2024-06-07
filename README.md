@@ -8,7 +8,7 @@ https://docs.python.org/3/reference/lexical_analysis.html#lexical-analysis
 https://docs.python.org/3.12/library/exceptions.html
 https://docs.python.org/3/library/re.html#
 https://docs.python.org/3/howto/regex.html
-
+https://docs.python.org/3/howto/regex.html#compilation-flags
 
 
 Ramakant Debata
